@@ -65,8 +65,7 @@ github/codeql-action
 - **Ruby on Rails 7.0.8.7**
 - **Octokit (GitHub API Client for Ruby)**
 - **PostgreSQL (or SQLite in development)**
-- **Stimulus.js for frontend interactions**
-- **Tailwind CSS for styling**
+
 
 ## Contributing
 

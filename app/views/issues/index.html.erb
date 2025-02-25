@@ -1,0 +1,42 @@
+
+  <h1>GitHub Issues Finder</h1>
+  <p><a href="/favorites">View Favorites</a></p>
+
+  <form action="/search_issues" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <label for="repo">Enter Repository Name (e.g., rails/rails):</label>
+    <input type="text" id="repo" name="repo" required>
+    <button type="submit">Search</button>
+  </form>
+
+  <% if @issues.any? %>
+    <h2>Issues for <%= @repo_name %></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>URL</th>
+          <th>Favorite</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @issues.each do |issue| %>
+          <tr>
+            <td><a href="<%= issue.html_url %>" target="_blank"><%= issue.title %></a></td>
+            <td><%= issue.user.login %></td>
+            <td><%= issue.html_url %></td>
+            <td>
+              <input type="checkbox" class="favorite-checkbox"
+                     data-issue-number="<%= issue.number %>"
+                     data-title="<%= issue.title %>"
+                     data-url="<%= issue.html_url %>"
+                     data-author="<%= issue.user.login %>"
+                     data-repo-name="<%= @repo_name %>">
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+

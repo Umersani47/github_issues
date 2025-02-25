@@ -1,0 +1,31 @@
+<body>
+  <h1>Favorite Issues</h1>
+  <p><a href="/">Back to Search</a></p>
+
+  <% if @favorites.any? %>
+    <table>
+      <thead>
+        <tr>
+          <th>Repository</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>URL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @favorites.each do |fav| %>
+          <tr>
+            <td><%= fav.repo_name %></td>
+            <td><a href="<%= fav.url %>" target="_blank"><%= fav.title %></a></td>
+            <td><%= fav.author %></td>
+            <td><%= fav.url %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  <% else %>
+    <p>No favorites added yet.</p>
+  <% end %>
+
+</body>
